@@ -3,12 +3,36 @@ import React, { useRef, useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Send, Mail, MapPin, Phone, CheckCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { Textarea } from '@/components/ui/textarea';
+import { Input } from '@/components/ui/input';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import emailjs from '@emailjs/browser';
 
 const EMAIL_SERVICE_ID = 'portfoliio';
 const EMAIL_TEMPLATE_ID = 'template_rhydmys';
 const EMAIL_PUBLIC_KEY = 'oxhpg6KupkAtMgAUi';
+// Define form schema with validation
+const formSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters." })
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
 const Contact: React.FC = () => {
+
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,38 +49,27 @@ const Contact: React.FC = () => {
     },
   });
   
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-  
-  const handleSubmit = async(e: React.FormEvent) => {
-    e.preventDefault();
+const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
-    
     try {
       const result = await emailjs.send(
         EMAIL_SERVICE_ID,
         EMAIL_TEMPLATE_ID,
         {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
+          from_name: data.name,
+          from_email: data.email,
+          message: data.message,
         },
         EMAIL_PUBLIC_KEY
       );
 
       if (result.status === 200) {
+        setIsSuccess(true);
         toast({
           title: "Message sent!",
           description: "Thank you for your message. I'll get back to you soon.",
         });
-
-        setFormData({
-          name: '',
-          email: '',
-          message: ''
-        });
+        form.reset();
       }
     } catch (error) {
       toast({
@@ -67,7 +80,6 @@ const Contact: React.FC = () => {
       console.error('Email error:', error);
     } finally {
       setIsSubmitting(false);
-    }
     }
   };
   
@@ -152,7 +164,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-medium">Location</h3>
-                  <p className="text-gray-600">Lucknow,India</p>
+                  <p className="text-gray-600">Lucknow, India</p>
                 </div>
               </div>
               
@@ -160,13 +172,13 @@ const Contact: React.FC = () => {
                 "flex items-start space-x-4 opacity-0 transform translate-y-10 transition-all duration-700 ease-out delay-500",
                 isVisible && "opacity-100 translate-y-0"
               )}>
-                <div className="flex-shrink-0 bg-white p-3 rounded-full shadow-sm">
+                {/* <div className="flex-shrink-0 bg-white p-3 rounded-full shadow-sm">
                   <Phone className="w-5 h-5 text-blue-600" />
-                </div>
-                <div>
+                </div> */}
+                {/* <div>
                   <h3 className="text-lg font-medium">Phone</h3>
                   <p className="text-gray-600">+91 9721585291</p>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
