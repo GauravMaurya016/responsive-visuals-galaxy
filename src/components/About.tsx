@@ -41,11 +41,14 @@ const About: React.FC = () => {
             "relative rounded-lg overflow-hidden opacity-0 transform translate-x-10 transition-all duration-1000 ease-out",
             isVisible && "opacity-100 translate-x-0"
           )}>
-            <div className="absolute inset-0 border-[3px] border-black rounded-lg transform -rotate-3 transition-transform duration-700 ease-in-out group-hover:rotate-0"></div>
+            <div className="absolute inset-0 border-[3px] border-black rounded-lg transform -rotate-3 transition-transform duration-700 ease-in-out group-hover:rotate-0">
+            </div>
+           
+
             <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50"></div>
               <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                <span className="text-sm">Your Image Here</span>
+                <span className="text-sm"> <img className='z-10' src="/public/profile.png" alt="picture" /></span>
               </div>
             </div>
           </div>

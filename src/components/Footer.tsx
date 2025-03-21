@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
             <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">Connect</h3>
             <div className="flex space-x-4">
               <a 
-                href="#" 
+                href="https://github.com/GauravMaurya016" 
                 className="text-gray-600 hover:text-black transition-colors duration-300"
                 aria-label="GitHub"
               >
@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a 
-                href="#" 
+                href="" 
                 className="text-gray-600 hover:text-black transition-colors duration-300"
                 aria-label="Twitter"
               >

@@ -28,15 +28,13 @@ const Skills: React.FC = () => {
         { name: "Node.js", level: 85 },
         { name: "Express", level: 80 },
         { name: "MongoDB", level: 75 },
-        { name: "SQL", level: 70 },
-        { name: "GraphQL", level: 65 },
+        { name: "RestAPI s", level: 70 },
       ]
     },
     {
       category: "Design",
       items: [
         { name: "Figma", level: 90 },
-        { name: "UI/UX", level: 85 },
         { name: "Responsive Design", level: 95 },
         { name: "GSAP/Animation", level: 80 },
         { name: "Tailwind CSS", level: 90 },
@@ -154,8 +152,8 @@ const Skills: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-3">
             {[
               "Git/GitHub", "Responsive Design", "SEO", "Performance Optimization", 
-              "Accessibility", "CI/CD", "Docker", "User Testing", "Agile", "Scrum",
-              "Jest", "Testing Library", "Storybook", "Webpack", "Vite"
+              "Accessibility",  "User Testing",
+              "Testing Library", "Storybook", "Webpack", "Vite"
             ].map((skill) => (
               <span 
                 key={skill}

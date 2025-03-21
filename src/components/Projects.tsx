@@ -20,30 +20,30 @@ const Projects: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "Modern E-commerce Platform",
-      description: "A full-featured e-commerce platform with seamless checkout flow and product management.",
-      tags: ["React", "Node.js", "Stripe", "Tailwind"],
-      image: "bg-gradient-to-br from-blue-400 to-indigo-600",
-      github: "#",
-      demo: "#"
+      title: "Passward Manager",
+      description: "A secure password manager Responsive web application.",
+      tags: ["React", "Node.js", "MongoDB", "Tailwind"],
+      image: "/public/secure.png",
+      github: "https://github.com/GauravMaurya016/Securepass",
+      demo: "https://secure-nine.vercel.app/"
     },
     {
       id: 2,
-      title: "Dashboard Analytics",
-      description: "Real-time analytics dashboard for monitoring business metrics and performance.",
-      tags: ["Next.js", "TypeScript", "D3.js", "Firebase"],
+      title: "Todo App",
+      description: "A simple todo app with CRUD operations and drag-and-drop functionality.",
+      tags: ["Next.js", "LocalStorage", "TailwindCSS"],
       image: "bg-gradient-to-br from-emerald-400 to-teal-600",
-      github: "#",
-      demo: "#"
+      github: "https://github.com/GauravMaurya016/Todo",
+      demo: "https://todo-jade-alpha-63.vercel.app/"
     },
     {
       id: 3,
-      title: "Content Management System",
-      description: "Customizable CMS built for content creators with powerful editing features.",
-      tags: ["Vue.js", "Express", "MongoDB", "TailwindCSS"],
+      title: "Blog post",
+      description: "A simple blog post with CRUD operations and drag-and-drop functionality.",
+      tags: ["Next.js", "MongoDB", "TailwindCSS"],
       image: "bg-gradient-to-br from-amber-400 to-orange-600",
-      github: "#",
-      demo: "#"
+      github: "https://github.com/GauravMaurya016/blogpost",
+      demo: "https://blogpost-taupe.vercel.app/"
     }
   ];
   

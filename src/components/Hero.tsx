@@ -17,7 +17,7 @@ const Hero: React.FC = () => {
       className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
     >
       {/* Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none"> 
         <div className="absolute top-1/4 -left-20 w-72 h-72 bg-blue-100 rounded-full opacity-40 filter blur-3xl animate-float"></div>
         <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-purple-100 rounded-full opacity-40 filter blur-3xl animate-float animate-delay-300"></div>
       </div>
@@ -90,7 +90,7 @@ const Hero: React.FC = () => {
             loaded && "opacity-100"
           )}>
             <a 
-              href="#" 
+              href="https://github.com/GauravMaurya016" 
               className="p-3 rounded-full border border-gray-200 text-gray-700 hover:bg-black hover:text-white hover:border-black transition-all duration-300"
               aria-label="Github"
             >

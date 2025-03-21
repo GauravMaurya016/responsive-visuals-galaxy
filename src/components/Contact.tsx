@@ -3,7 +3,11 @@ import React, { useRef, useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Send, Mail, MapPin, Phone } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import emailjs from '@emailjs/browser';
 
+const EMAIL_SERVICE_ID = 'portfoliio';
+const EMAIL_TEMPLATE_ID = 'template_rhydmys';
+const EMAIL_PUBLIC_KEY = 'oxhpg6KupkAtMgAUi';
 const Contact: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -21,25 +25,44 @@ const Contact: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const result = await emailjs.send(
+        EMAIL_SERVICE_ID,
+        EMAIL_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        EMAIL_PUBLIC_KEY
+      );
+
+      if (result.status === 200) {
+        toast({
+          title: "Message sent!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
+
+        setFormData({
+          name: '',
+          email: '',
+          message: ''
+        });
+      }
+    } catch (error) {
       toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
       });
-      
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
-      });
-      
+      console.error('Email error:', error);
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
   
   useEffect(() => {
@@ -110,7 +133,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-medium">Email</h3>
-                  <p className="text-gray-600">hello@yourportfolio.com</p>
+                  <p className="text-gray-600">gauravpro0016@gmail.com</p>
                 </div>
               </div>
               
@@ -123,7 +146,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-medium">Location</h3>
-                  <p className="text-gray-600">San Francisco, CA</p>
+                  <p className="text-gray-600">Lucknow,India</p>
                 </div>
               </div>
               
@@ -136,7 +159,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-medium">Phone</h3>
-                  <p className="text-gray-600">+1 (123) 456-7890</p>
+                  <p className="text-gray-600">+91 9721585291</p>
                 </div>
               </div>
             </div>
