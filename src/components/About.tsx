@@ -48,7 +48,7 @@ const About: React.FC = () => {
             <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50"></div>
               <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                <span className="text-sm"> <img className='z-10' src="/public/profile.png" alt="picture" /></span>
+                <span className="text-sm"> <img className='z-10' src="https://i.ibb.co/3m434MBq/profile.png" alt="" /></span>
               </div>
             </div>
           </div>
